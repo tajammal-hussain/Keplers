@@ -107,9 +107,6 @@ export function initNavigation() {
     // Attach event listener to each navButton
     navButtons.forEach(button => {
         button.addEventListener('click', (e) => {
-            e.preventDefault();
-            console.log('Navigation button clicked:', button);
-
             if (isAnimating) { // Prevent click if an animation is already running
                 return;
             }
@@ -135,4 +132,17 @@ export function initNavigation() {
             isOpen = !isOpen;
         });
     });
+    document.querySelectorAll('.menu-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            if (isOpen && !isAnimating) {
+                closeTl.restart();
+                if (currentTextContentElement) {
+                    currentTextContentElement.textContent = 'Menu';
+                }
+                isOpen = false;
+            }
+        });
+    });
+
+    
 }
