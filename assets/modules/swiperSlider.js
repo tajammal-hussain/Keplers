@@ -61,7 +61,9 @@ export default function initSwiperSlider() {
           console.log('Swiper slide changed! Pausing all videos.');
           pauseAllVideos();
       });
-
+      
+      pauseAllVideos();
+      
       // Function to pause all videos on the page
       function pauseAllVideos() {
           const allVideos = document.querySelectorAll('video');
